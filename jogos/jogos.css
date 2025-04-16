@@ -1,0 +1,284 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+}
+
+.wrap1 {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.button {
+  min-width: 300px;
+  min-height: 60px;
+  display: inline-flex;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+}
+
+.button::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, 
+.button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.button:hover::before, 
+.button:focus::before {
+  opacity: 1;
+}
+
+.button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.button:hover::after, 
+.button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+/* Nova estrutura para imagem + título */
+.img-container {
+  text-align: center;
+  max-width: 180px;
+}
+
+.img-title {
+  color: white;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+/* Imagem interativa */
+.open-img {
+  cursor: pointer;
+  width: 180px;
+  height: auto;
+  border: 4px solid #4FD1C5;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.open-img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  z-index: 999;
+}
+
+/* Aba flutuante */
+.aba {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #111;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px red;
+  display: none;
+  z-index: 1000;
+  text-align: center;
+  width: 300px;
+}
+
+.aba img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.copy-btn, .close-btn {
+  padding: 8px 15px;
+  margin: 5px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.copy-btn {
+  background-color: #00aa00;
+  color: white;
+}
+
+.close-btn {
+  background-color: #aa0000;
+  color: white;
+}
+/* Botão Resgatar Jogo (topo direito) */
+.resgatar-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.resgatar-btn {
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: rgbGlow 3s linear infinite;
+}
+
+@keyframes rgbGlow {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* POPUP DE RESGATE */
+.resgate-popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px #00f;
+  z-index: 1002;
+  display: none;
+}
+
+.resgate-popup input {
+  background: #000;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.resgate-popup h2 {
+  color: #00ffff;
+  margin-bottom: 15px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+}
+
+.key-box {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.key-box input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background: #000;
+  border: 1px solid #00ffff;
+  color: #00ffff;
+}
+
+.rgb-button {
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  background-size: 200%;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  animation: rgbGlow 3s linear infinite;
+}
+
+@keyframes rgbGlow {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.top11 {
+  text-align: center;
+  color: #00f;
+  background-color: #000;
+  cursor: cell;
+  background: linear-gradient(90deg, #00f, #0ff, #00f);
+  
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="O meu primeiro site Bio">
+  <meta name="keywords" content="Sini Siniatro Bio Portugal games Youtube Portfolio">
+  <meta name="author" content="Siniatro">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/solana_sol_crypto_icon_264368.png" type="image/x-icon">
+  <title>Jogos Gratis</title>
+  <link rel="stylesheet" href="jogos.css">
+</head>
+<body>
+
+  <top class="top11"><h1>Jogos |V_0.1alpha</V_0></h1></top>
+
+  <!-- 🔑 Validador de Key com botão RGB -->
+  <div class="key-box">
+    <input type="text" id="keyInput" placeholder="Insere a tua key">
+    <br>
+    <button class="rgb-button" onclick="validateKey()">VALIDAR</button>
+    <div class="message" id="message"></div>
+  </div></top>
+  <hr><br>
+
+  <div class="wrap1">
+    <a href="../web/web.html" style="color: black;">
+      <button class="button">Ir para Home</button>
+    </a>
+  </div>
+
+  <!-- Primeira fileira de jogos -->
+  <div class="wrap1">
+    <div class="img-container">
+      <img src="../img/Schedule.jpg" alt="Schedule" class="open-img" onclick="abrirAba(this, 'Shedule=12s3trfc&&dkm3')">
+      <p class="img-title">Schedule</p>
+    </div><br>
+
+    <div class="img-container">
+      <img src="../img/Subnautica.avif" alt="Subnautica" class="open-img" onclick="abrirAba(this, 'Subnautica=32bh6y756yfe4rferg')">
+      <p class="img-title">Subnautica</p>
+    </div><br>
+
+    <div class="img-container">
+      <img src="../img/The Cofin Of Andy and Leyley.jpeg" alt="The Coffin Of Andy and Leyley" class="open-img" onclick="abrirAba(this, 'The_Cofin_of_Andy_and_Leyley=32bh6y756y')">
+      <p class="img-title">The Coffin Of Andy and Leyley</p>
+    </div><br>
+  </div>
+
+  <!-- Segunda fileira de jogos (embaixo) -->
+  <div class="wrap1">
+    <div class="img-container">
+      <img src="../img/Screenshot_20250416_204457_aimbot_brawl_.jpg" alt="Hollow Knight" class="open-img" onclick="abrirAba(this, 'S.B Brawl=2sd3r34r5rw')">
+      <p class="img-title">S.B Brawl</p>
+    </div><br>
+
+    <div class="img-container">
+      <img src="../img/Repo.jpg" alt="Celeste" class="open-img" onclick="abrirAba(this, 'R.E.P.O=E23D3R34R43T554')">
+      <p class="img-title">R.E.P.O</p>
+    </div><br>
+
+    <div class="img-container">
+      <img src="../img/OIP.jpeg" alt="Slay the Spire" class="open-img" onclick="abrirAba(this, 'Indespunivel')">
+      <p class="img-title">Misidmiside</p>
+    </div><br>
+  </div>
+
+  <!-- 🔲 SOBREPOSIÇÃO + ABA -->
+  <div class="overlay" id="overlay" onclick="fecharAba()"></div>
+
+  <div class="aba" id="aba">
+    <img id="aba-img" src="" alt="Imagem Escolhida">
+    <p id="textoCopiar">Texto aqui</p>
+    <button class="copy-btn" onclick="copiarTexto()">📋 Copiar</button>
+    <button class="close-btn" onclick="fecharAba()">🔙 Voltar</button>
+  </div>
+
+  <!-- 📜 SCRIPT -->
+  <script>
+    function abrirAba(img, texto) {
+      document.getElementById("aba-img").src = img.src;
+      document.getElementById("textoCopiar").innerText = texto;
+      document.getElementById("aba").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+      document.body.style.transform = "translateX(-20px)";
+    }
+
+    function fecharAba() {
+      document.getElementById("aba").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+      document.body.style.transform = "translateX(0)";
+    }
+
+    function copiarTexto() {
+      const texto = document.getElementById("textoCopiar").innerText;
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Texto copiado!");
+      });
+    }
+
+    // 🎯 Validador de keys
+    const keys = {
+      "Shedule=12s3trfc&&dkm3": "https://drive.google.com/file/d/17TjS5At9yr6RdZaxBi5vZzJX5zksK5bo/view?usp=sharing",
+      "Subnautica=32bh6y756yfe4rferg": "https://gofile.io/d/exemplo123",
+      "The_Cofin_of_Andy_and_Leyley=32bh6y756y": "https://drive.google.com/file/d/1NXR2Qrco0AmxL4RtkCiGxunvdZrzrWmN/view?usp=sharing",
+      "R.E.P.O=E23D3R34R43T554": "https://fromsmash.com/REPO.LINK",
+      "S.B Brawl=2sd3r34r5rw": "https://drive.google.com/file/d/1JI1eqcHnt61pxMCfp4-m4rCV2K6Fo_MX/view?usp=drivesdk",
+      "Misidmiside=34t5u8jjveubunj8h53eg4u8jng54un": "https://gofile.io/d/slaythespire"
+    };
+
+    function validateKey() {
+      const input = document.getElementById("keyInput").value.trim();
+      const msg = document.getElementById("message");
+
+      if (keys[input]) {
+        msg.style.color = "#00ff00";
+        msg.innerText = "✅ Key válida! A transferir...";
+        setTimeout(() => {
+          window.open(keys[input], '_blank');
+        }, 1000);
+      } else {
+        msg.style.color = "red";
+        msg.innerText = "❌ Key inválida. Tenta outra.";
+      }
+    }
+  </script>
+</body>
+</html>
